@@ -1,1 +1,3 @@
 # portfolio
+This repo is a collection of projects I implemented in C, C++, Python, assembler, ...
+Folders named accordingly.
