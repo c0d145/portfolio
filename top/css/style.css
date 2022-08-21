@@ -1,0 +1,37 @@
+/* This is a css comment. */
+body {
+    background-color: black;
+    color: white;
+}
+
+p {
+    color:white;
+}
+
+h1 {
+    color:#Ce0000;
+}
+
+.sausage {
+    color:rgb(255, 160, 170);
+}
+
+/* The CSS box model. */
+
+/*
+    margin:  
+    border:    
+    padding:
+*/
+.box {
+    background: darkgreen;
+    width: 300px;
+    /* margin creates empty space WITHOUT the BACKGROUND-COLOR! */
+    margin: 100px;
+    /* padding creates empty space WITH the BACKGROUND-COLOR! */
+    padding: 20px;
+    border-width: 5px;
+    border-color: #Ce0000;
+    border-style: dashed;
+    border-radius: 5px;
+}
