@@ -4,10 +4,24 @@ body {
     color: white;
 }
 
-p {
-    color:white;
+div {
+    background-color: red;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
 }
 
+p {
+    color:white;
+    font-size: 18px;
+}
+/*
+button {
+    background-color: orange;
+    font-size: 18px;
+}
+*/
 h1 {
     color:#Ce0000;
 }
@@ -35,3 +49,20 @@ h1 {
     border-style: dashed;
     border-radius: 5px;
 }
+
+.avatar.proportioned {
+    height: auto;
+    width: 300px;
+  }
+  
+  .avatar.distorted {
+    height: 400px;
+    width: 200px;
+  }
+
+  .container .text {
+    background-color: yellow;
+    color: red;
+    font-size: 20px;
+    text-align: center;
+  }
