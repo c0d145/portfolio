@@ -1,0 +1,6 @@
+# Ignore configs for Visual Studio Code
+.vscode
+
+# Ignore possible pycaches from compiling.
+__pycache__
+
