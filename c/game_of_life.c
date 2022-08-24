@@ -9,8 +9,7 @@
 *
 * living cells = *
 * refresh all cells "at once".
-* all edges are neighbours of each other
-* Modulo-Operation um Geometrie zu realisiern.
+* All edges are neighbours of each other. Modulo operation to realize geometry.
 *
 * RULES (through function "examinator"):
 * (1) A cell comes to life when exactly three of its eight neighbours are alive.
