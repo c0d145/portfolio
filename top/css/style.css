@@ -26,6 +26,22 @@ h1 {
     color:#Ce0000;
 }
 
+a:link {
+    color:blueviolet;
+}
+
+a:visited {
+    color:pink;
+}
+
+a:hover {
+    color:darkred;
+}
+
+a:active {
+    color:blue;
+}
+
 .sausage {
     color:rgb(255, 160, 170);
 }
@@ -53,16 +69,38 @@ h1 {
 .avatar.proportioned {
     height: auto;
     width: 300px;
-  }
+}
   
-  .avatar.distorted {
+.avatar.distorted {
     height: 400px;
     width: 200px;
-  }
+}
 
-  .container .text {
+.container .text {
     background-color: yellow;
     color: red;
     font-size: 20px;
     text-align: center;
-  }
+}
+
+.box-one {
+    background-color: blueviolet;
+    padding: 20px;
+    height: 100px;
+    width: 100px;
+    border: 20px solid darkred;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.box-two {
+    background-color: blueviolet;
+    padding: 20px;
+    height: 100px;
+    width: 100px;
+    border: 20px solid darkred;
+}
+
+ul {
+    list-style-image: url(../img/icon.png);
+}
