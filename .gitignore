@@ -4,3 +4,5 @@
 # Ignore possible pycaches from compiling.
 __pycache__
 
+# Ignore object-files from c compiling.
+*.o
