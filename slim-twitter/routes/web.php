@@ -16,23 +16,27 @@ use App\Models\Listing;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('listings', [
+        'heading' => 'Latest Listings',
+        'listings' => Listing::all()
+    ]);
 });
 
 // Testing the output possibilities.
-Route::get('/hello', function() {
+Route::get('/hello', function () {
     return response('<h1>Hello World</h1>')
-        -> header('Content-Type', 'text/plain')
-        -> header('foo', 'bar');
+        ->header('Content-Type', 'text/plain')
+        ->header('foo', 'bar');
 });
 
 // Testing id based route. Could become handy for showing tweets.
-Route::get('/posts/{id}', function($id) {
+Route::get('/posts/{id}', function ($id) {
     return response('Posts' . $id);
 })->where('id', '[0-9]+');
 
 // Testing request handling.
-Route::get('/search', function(Request $request) {
+Route::get('/search', function (Request $request) {
     //return response('Posts' . $id);
     dd($request);
     // dd($request->name . ' ' . $request-> city);
@@ -40,18 +44,25 @@ Route::get('/search', function(Request $request) {
 });
 
 // Show all Listings.
-Route::get('/listing', function() {
+Route::get('/listings', function () {
     return view('listings', [
         'heading' => 'Latest Listings',
         'listings' => Listing::all()
-        ]);
+    ]);
 });
 
 // Show single listing.
-Route::get('/listings/{id}', function($id) {
+// Route::get('/listings/{id}', function ($id) {
+//     return view('listing', [
+//         'listing' => Listing::find($id)
+//     ]);
+// });
+
+// Show single listing with route model binding. -> Automatic 404 for non existing IDs.
+Route::get('/listings/{listing}', function (Listing $listing) {
     return view('listing', [
-        'listing' => Listing::find($id)
-        ]);
+        'listing' => $listing
+    ]);
 });
 
 
@@ -59,4 +70,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
