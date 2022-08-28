@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Listing;
@@ -15,13 +16,7 @@ use App\Models\Listing;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
 // Testing the output possibilities.
 Route::get('/hello', function () {
@@ -44,12 +39,7 @@ Route::get('/search', function (Request $request) {
 });
 
 // Show all Listings.
-Route::get('/listings', function () {
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-    ]);
-});
+Route::get('/listings', [ListingController::class, 'index']);
 
 // Show single listing.
 // Route::get('/listings/{id}', function ($id) {
@@ -58,13 +48,13 @@ Route::get('/listings', function () {
 //     ]);
 // });
 
-// Show single listing with route model binding. -> Automatic 404 for non existing IDs.
-Route::get('/listings/{listing}', function (Listing $listing) {
-    return view('listing', [
-        'listing' => $listing
-    ]);
-});
+// Show Create Form
+Route::get('/listings/create', [ListingController::class, 'create']);
 
+// Show single listing with route model binding. -> Automatic 404 for non existing IDs.
+// IMPORTANT: This must be after all other routes to /listing/ so they are not
+// interpreted as ID checks.
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
