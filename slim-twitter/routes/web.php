@@ -57,6 +57,11 @@ Route::post('/listings', [ListingController::class, 'store']);
 // Show Edit Form
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 
+// Update Listing
+Route::put('/listings/{listing}', [ListingController::class, 'update']);
+
+// Delete Listing
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
 
 // Show single listing with route model binding. -> Automatic 404 for non existing IDs.
 // IMPORTANT: This must be after all other routes to /listing/ so they are not
