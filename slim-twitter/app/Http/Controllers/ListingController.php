@@ -13,7 +13,7 @@ class ListingController extends Controller
     {
         return view('listings.index', [
             // 'listings' => Listing::all()
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(5)
         ]);
     }
 
@@ -32,6 +32,7 @@ class ListingController extends Controller
 
     // Store Listing Data.
     public function store(Request $request) {
+        // Function storage() saves in folder storage/app/
         //dd($request->all());
         $formFields = $request->validate([
             'title' => 'required',
@@ -43,8 +44,16 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
 
+        // Check if image was uploaded.
+        if($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos','public');
+        }
+
+        //dd($request->file('logo')->store('logos','public'));
         Listing::create($formFields);
 
-        return redirect('/');
+        //Session::flash('message', 'Listing created!');
+
+        return redirect('/')->with('message', 'Listing created successfully!');
     }
 }
