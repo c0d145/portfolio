@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\Listing;
 use Illuminate\Database\Seeder;
 
@@ -22,8 +23,19 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Test the factory for Listing-entries.
-        Listing::factory(6)->create();
+
+        // Create one user with the factory with is the creator of the afterwards
+        // created listings / tweets.
+        $user = User::factory()->create([
+            'name' => 'Test User',
+//            'password' => 'password',
+            'email' => 'test@user.com'
+        ]);
+
+        // Test the factory for Listing-entries. All created entries owned by "Test User".
+        Listing::factory(6)->create([
+            'user_id' => $user->id
+        ]);
 
         // Listing::create([
         //     'title' => 'Laravel Senior Developer',
