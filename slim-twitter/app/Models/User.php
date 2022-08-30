@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Relationship with Listings
-    public function listings() {
-        return $this->hasMany(Listing::class, 'user_id');
+    // Relationship with Tweets
+    public function tweets() {
+        return $this->hasMany(Tweet::class, 'user_id');
     }
 }

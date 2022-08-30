@@ -2,25 +2,25 @@
     <x-card class="p-10">
       <header>
         <h1 class="text-3xl text-center font-bold my-6 uppercase">
-          Manage Gigs
+          Manage Tweets
         </h1>
       </header>
   
       <table class="w-full table-auto rounded-sm">
         <tbody>
-          @unless($listings->isEmpty())
-          @foreach($listings as $listing)
+          @unless($tweets->isEmpty())
+          @foreach($tweets as $tweet)
           <tr class="border-gray-300">
             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-              <a href="/listings/{{$listing->id}}"> {{$listing->title}} </a>
+              <a href="/tweets/{{$tweet->id}}"> {{$tweet->title}} </a>
             </td>
             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-              <a href="/listings/{{$listing->id}}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i
+              <a href="/tweets/{{$tweet->id}}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i
                   class="fa-solid fa-pen-to-square"></i>
                 Edit</a>
             </td>
             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-              <form method="POST" action="/listings/{{$listing->id}}">
+              <form method="POST" action="/tweets/{{$tweet->id}}">
                 @csrf
                 @method('DELETE')
                 <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
@@ -31,7 +31,7 @@
           @else
           <tr class="border-gray-300">
             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-              <p class="text-center">No Listings Found</p>
+              <p class="text-center">No tweets found!</p>
             </td>
           </tr>
           @endunless

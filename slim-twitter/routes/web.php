@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Listing;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ListingController;
+use App\Http\Controllers\TweetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ use App\Http\Controllers\ListingController;
 |
 */
 
-Route::get('/', [ListingController::class, 'index']);
+Route::get('/', [TweetController::class, 'index']);
 
 // Testing the output possibilities.
 Route::get('/hello', function () {
@@ -39,38 +39,31 @@ Route::get('/search', function (Request $request) {
     //return $request->name . ' ' . $request-> city;
 });
 
-// Show all Listings.
-Route::get('/listings', [ListingController::class, 'index']);
-
-// Show single listing.
-// Route::get('/listings/{id}', function ($id) {
-//     return view('listing', [
-//         'listing' => Listing::find($id)
-//     ]);
-// });
+// Show all Tweets.
+Route::get('/tweets', [TweetController::class, 'index']);
 
 // Show create form
-Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
+Route::get('/tweets/create', [TweetController::class, 'create'])->middleware('auth');
 
-// Store listing data
-Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
+// Store tweet data
+Route::post('/tweets', [TweetController::class, 'store'])->middleware('auth');
 
 // Show edit form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
+Route::get('/tweets/{tweet}/edit', [TweetController::class, 'edit'])->middleware('auth');
 
-// Update listing
-Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+// Update tweet
+Route::put('/tweets/{tweet}', [TweetController::class, 'update'])->middleware('auth');
 
-// Delete listing
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
+// Delete tweet
+Route::delete('/tweets/{tweet}', [TweetController::class, 'destroy'])->middleware('auth');
 
-// Manage Listings
-Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+// Manage Tweets
+Route::get('/tweets/manage', [TweetController::class, 'manage'])->middleware('auth');
 
-// Show single listing with route model binding. -> Automatic 404 for non existing IDs.
-// IMPORTANT: This must be after all other routes to /listing/ so they are not
+// Show single tweet with route model binding. -> Automatic 404 for non existing IDs.
+// IMPORTANT: This must be after all other routes to /tweet/ so they are not
 // interpreted as ID checks.
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
+Route::get('/tweets/{tweet}', [TweetController::class, 'show']);
 
 // Show register / create Form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
